@@ -177,10 +177,10 @@ public class Deck {
      */
 
     /*** CONSTANT VARIABLES ***/
-    public static final String[] DEFAULT_CARDS = new String[208];
+    public static final String[] DEFAULT_CARDS = new String[312];
 
     /*** INSTANCE VARIABLES ***/
-    private String[] cards = new String[208];
+    private String[] cards = new String[312];
     private Deck.Card card = new Deck.Card();
 
     /*** CONSTRUCTOR METHODS ***/
@@ -234,6 +234,10 @@ public class Deck {
             cards[i+104] = singleDeck[i];
 
             cards[i+156] = singleDeck[i];
+
+            cards[i+208] = singleDeck[i];
+
+            cards[i+260] = singleDeck[i];
         }
         return this.cards;
     }

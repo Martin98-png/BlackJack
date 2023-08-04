@@ -62,7 +62,7 @@ public class User extends Player{
             ans = player.getPointsValue(index);
         }
         else if(player.getPlayerHand(index).contains("A")){
-            if(sumOfValues + 11 < 21){
+            if(sumOfValues + 11 <= 21){
                 ans = 11;
             }
             else {
@@ -70,5 +70,15 @@ public class User extends Player{
             }
         }
         return ans;
+    }
+
+    public boolean checkDouble(Player player, int index){
+
+        if(player.getPlayerHand(index).contains("A")){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

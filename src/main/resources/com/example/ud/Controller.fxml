@@ -11,8 +11,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane depthTest="ENABLE" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #30231C;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ud.Controller">
-   <Pane layoutX="22.0" layoutY="23.0" prefHeight="282.0" prefWidth="388.0" style="-fx-background-color: lightgreen;" translateX="1.0">
+<AnchorPane depthTest="ENABLE" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #112e2e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ud.Controller">
+   <Pane layoutX="22.0" layoutY="23.0" prefHeight="282.0" prefWidth="388.0" style="-fx-background-color: #279259;" translateX="1.0">
       <ImageView blendMode="HARD_LIGHT" fitHeight="85.0" fitWidth="82.0" layoutX="174.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@card.png" />
       </ImageView>
@@ -62,7 +62,7 @@
          <Point3D />
       </rotationAxis>
    </Button>
-   <Label fx:id="infoLabel" alignment="TOP_CENTER" blendMode="SRC_ATOP" layoutX="434.0" layoutY="23.0" prefHeight="271.0" prefWidth="158.0" style="-fx-background-color: lightblue;" text="Place your Bet:&#10;You have to bet &#10;atleast 10 Coins and &#10;less than 50 Coins per turn.&#10;&#10;* Click Raise Bet to add &#10;10 coins in your bet.&#10;&#10;* Click Down Bet to &#10;remove 10 coins &#10;in your bet.&#10;&#10;* Click HIT one time&#10;to finish your bet.&#10;&#10;Total Coins: 490 &#10;Bet Coins : 10" textAlignment="CENTER">
+   <Label fx:id="infoLabel" alignment="TOP_CENTER" blendMode="SRC_ATOP" layoutX="434.0" layoutY="23.0" prefHeight="271.0" prefWidth="158.0" style="-fx-background-color: #ced6dc;" text="Place your Bet:&#10;You have to bet &#10;atleast 10 Coins and &#10;less than 50 Coins per turn.&#10;&#10;* Click Raise Bet to add &#10;10 coins in your bet.&#10;&#10;* Click Down Bet to &#10;remove 10 coins &#10;in your bet.&#10;&#10;* Click HIT one time&#10;to finish your bet.&#10;&#10;Total Coins: 490 &#10;Bet Coins : 10" textAlignment="CENTER">
       <opaqueInsets>
          <Insets />
       </opaqueInsets>
