@@ -242,6 +242,21 @@ public class Deck {
         return this.cards;
     }
 
+    public String[] createOnlyTwo(){
+        String[] singleDeck = new String[300];
+
+        for(int i = 0; i < 300; i++)
+        {
+            card.setAll(1,Card.HEART);
+            singleDeck[i] = card.getCardFormat();
+        }
+
+        for(int i = 0; i < 300; i++){
+            cards[i] = singleDeck[i];
+        }
+        return this.cards;
+    }
+
     /*** OTHER REQUIRED METHODS ***/
 
     @Override

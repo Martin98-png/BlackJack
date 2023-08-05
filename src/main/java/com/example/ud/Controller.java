@@ -9,6 +9,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,6 +27,7 @@ public class Controller {
 
     /** CONSTANT VARIABLES **/
     private final String[] Deck = new Deck().shuffle();
+    //private final String[] customDeck = new Deck().createOnlyTwo();
 
     /** VARIABLES **/
     private User userCards;
@@ -33,6 +35,7 @@ public class Controller {
     private User secSplitUserCards;
     private CPU cpuCards;
     private ArrayList<String> gameDeck = new ArrayList<>(Arrays.asList(Deck));
+    //private ArrayList<String> customGameDeck = new ArrayList<>(Arrays.asList(customDeck));
     private int timesButtonClicked = 0;
     private int timesSplitClicked = 0;
     private int restartClick = 0;
@@ -66,6 +69,18 @@ public class Controller {
     private Label spotFourCPU = new Label();
     @FXML
     private Label spotFiveCPU = new Label();
+    @FXML
+    private Label coinsLabel = new Label();
+    @FXML
+    private Label betLabel = new Label();
+    @FXML
+    private Label totalCoinsLabel = new Label();
+    @FXML
+    private Label betCoinsLabel = new Label();
+    @FXML
+    private Label playerCardsValue = new Label();
+    @FXML
+    private Label dealerCardsValue = new Label();
 
     //Buttons Variables
     @FXML
@@ -98,6 +113,7 @@ public class Controller {
         standButton.setDisable(true);
         raiseBet.setDisable(false);
         downBet.setDisable(false);
+        coinsLabel.setText(Integer.toString(totalCoins));
 
         totalPoints = 0;
         firstHalfPoints = 0;
@@ -120,6 +136,18 @@ public class Controller {
             dealerCards[i] = gameDeck.get(i);
             gameDeck.remove(i);
         }
+//        if(customGameDeck.size() < 15)
+//        {
+//            customGameDeck = new ArrayList<>(Arrays.asList(customDeck));
+//        }
+//        for(int i = 0;i < 5;i++) {
+//            playerCards[i] = customGameDeck.get(i);
+//            customGameDeck.remove(i);
+//        }
+//        for(int i = 0;i < 5;i++){
+//            dealerCards[i] = customGameDeck.get(i);
+//            customGameDeck.remove(i);
+//        }
         userCards = new User(totalCoins,playerCards);
         cpuCards = new CPU(dealerCards);
 
@@ -128,6 +156,7 @@ public class Controller {
             raiseBet.setDisable(true);
             downBet.setDisable(true);
             infoLabel.setText("GAME OVER!\nReopen The App\nTo PLay Again.");
+            infoLabel.setTextAlignment(TextAlignment.CENTER);
         }
 
     }
@@ -156,53 +185,71 @@ public class Controller {
         if(totalPoints > 21){
             configureWinCondition();
             totalCoins -= betCoins;
-            infoLabel.setText("You Lose!\n\n\n\nPlayer Cards Value: " + totalPoints +
-                    "\n\nTotal Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Lose!\nTo continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + totalPoints);
+
         }
         else if(totalPoints == 21){
             configureWinCondition();
             totalCoins += (betCoins * 2);
-            infoLabel.setText("You Win!\n\n\n\nPlayer Cards Value: " + totalPoints +
-                    "\n\nYou get: " + betCoins * 2 +" coins\n" +
-                    "Total Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Win!\nYou get: " + betCoins * 2 +" coins\nTo continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + totalPoints);
         }
         else if(standButton.isDisable() && timesButtonClicked > 0){
             dealerPoints();
             if(cpuTotalPoints > 21 && totalPoints < 21) {
                 totalCoins += (betCoins * 2);
-                infoLabel.setText("You Win!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                infoLabel.setText("You Win!\nTo continue click HIT one time then change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             else if(cpuTotalPoints < totalPoints){
                 totalCoins += (betCoins * 2);
-                infoLabel.setText("You Win!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                infoLabel.setText("You Win!\nTo continue click HIT one time then change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             else if(cpuTotalPoints > totalPoints) {
                 totalCoins -= betCoins;
-                infoLabel.setText("You Lose!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                infoLabel.setText("You Lose!\nTo continue click HIT one time then change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             else if(cpuTotalPoints == totalPoints){
                 totalCoins += betCoins;
-                infoLabel.setText("Draw!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                infoLabel.setText("Draw!\nTo continue click HIT one time then change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             restartClick = 2;
         }
@@ -216,107 +263,135 @@ public class Controller {
         if(firstHalfPoints > 21 && secondHalfPoints > 21){
             configureWinCondition();
             totalCoins -= betCoins;
-            infoLabel.setText("You Lose!\n\n\n\nPlayer Cards Value: " + firstHalfPoints
-                    + " & " + secondHalfPoints +
-                    "\n\nTotal Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Lose!\nTo continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
         }
         else if(firstHalfPoints > 21 || secondHalfPoints > 21){
             timesButtonClicked = 0;
             configureWinCondition();
             totalCoins -= betCoins/2;
-            infoLabel.setText("You Lose In One Hand!\n\n\n\nPlayer Cards Value: " + firstHalfPoints + " & "
-                    + secondHalfPoints  +
-                    "\n\nTotal Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Lose In One Hand!\nTo continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
         }
         else if(firstHalfPoints == 21 && secondHalfPoints == 21){
             timesSplitClicked = 0;
             configureWinCondition();
             totalCoins += (betCoins * 2);
-            infoLabel.setText("You Win!\n\n\n\nPlayer Cards Value: " + firstHalfPoints + " & "
-                    + secondHalfPoints +
-                    "\n\nYou get: " + betCoins * 2 +
-                    " coins\nTotal Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nIf want to continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Win!\nYou get: " + betCoins * 2 +
+                    " coins\nIf want to continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
         }
         else if(firstHalfPoints == 21 || secondHalfPoints == 21){
             timesButtonClicked = 0;
             configureWinCondition();
             totalCoins += betCoins;
-            infoLabel.setText("You Win In One Hand!\n\n\n\nPlayer Cards Value: " + firstHalfPoints +
-                    " & " + secondHalfPoints +
-                    "\n\nYou get: " + betCoins * 2 +
-                    " coins\nTotal Coins: " + totalCoins +
-                    "\nBet: " + betCoins +
-                    "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+            infoLabel.setText("You Win In One Hand!\nYou get: " + betCoins * 2 +
+                    " coins\nTo continue click HIT one time then change your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
         }
         else if(standButton.isDisable() && timesSplitClicked > 0){
             if(cpuTotalPoints > 21) {
                 if(secondHalfPoints < 21 && firstHalfPoints < 21){
                     totalCoins += (betCoins * 2);
-                    infoLabel.setText("You Win!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Win!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
+                    playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                    dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
                 }
                 else if(secondHalfPoints < 21 || firstHalfPoints < 21){
                     totalCoins += betCoins;
-                    infoLabel.setText("You Win in One Hand!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Win in One Hand!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
+                    playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                    dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
                 }
 
             }
             else if(cpuTotalPoints < firstHalfPoints){
                 if(cpuTotalPoints < secondHalfPoints){
                     totalCoins += (betCoins * 2);
-                    infoLabel.setText("You Win!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Win!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
                 }
                 else if(cpuTotalPoints > secondHalfPoints){
                     totalCoins += betCoins;
-                    infoLabel.setText("You Win In One Hand!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Win In One Hand!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
+                    playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                    dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
                 }
             }
             else if(cpuTotalPoints > firstHalfPoints) {
                 if(cpuTotalPoints > secondHalfPoints){
                     totalCoins -= betCoins;
-                    infoLabel.setText("You Lose!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Lose!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
+                    playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                    dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
                 }
                 else if(cpuTotalPoints < secondHalfPoints){
                     totalCoins += betCoins;
-                    infoLabel.setText("You Win In One Hand!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                            + firstHalfPoints + " & " + secondHalfPoints +
-                            "\n\nTotal Coins: " + totalCoins +
-                            "\nBet: " + betCoins +
-                            "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                    infoLabel.setText("You Win In One Hand!\nTo continue click HIT one time then change your bet.");
+                    infoLabel.setAlignment(Pos.CENTER);
+                    coinsLabel.setText(Integer.toString(totalCoins));
+                    betLabel.setText(Integer.toString(betCoins));
+                    totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                    betCoinsLabel.setText("Bet Coins: " + betCoins);
+                    playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                    dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
                 }
             }
             else{
                 totalCoins += betCoins;
-                infoLabel.setText("Draw!\n\n\nDealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints +
-                        "\n\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nclick HIT one time\nthen change your bet.");
+                infoLabel.setText("Draw!\n" +
+                        "To continue click HIT one time then change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             restartClick = 2;
         }
@@ -332,57 +407,65 @@ public class Controller {
                 textColor(cpuCards,spotOneCPU, 0);
                 spotOneCPU.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
                 cpuTotalPoints += cpuCards.checkBlackJack(cpuCards, 0, cpuTotalPoints);
-                infoLabel.setText("Dealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nYou get: " + betCoins * 2 +
-                        " coins\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nchange your bet.");
+                infoLabel.setText("You get: " + betCoins * 2 + " coins" +
+                        "\nTo continue change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             if(cpuTotalPoints < 17) {
                 spotTwoCPU.setText(cpuCards.getPlayerHand(1));
                 textColor(cpuCards,spotTwoCPU, 1);
                 spotTwoCPU.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
                 cpuTotalPoints += cpuCards.checkBlackJack(cpuCards, 1, cpuTotalPoints);
-                infoLabel.setText("Dealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nYou get: " + betCoins * 2 +
-                        " coins\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nchange your bet.");
+                infoLabel.setText("You get: " + betCoins * 2 + " coins" +
+                        "\nTo continue change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
                 spotThreeCPU.setText(cpuCards.getPlayerHand(2));
                 textColor(cpuCards,spotThreeCPU, 2);
                 spotThreeCPU.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
                 cpuTotalPoints += cpuCards.checkBlackJack(cpuCards, 2, cpuTotalPoints);
-                infoLabel.setText("Dealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nYou get: " + betCoins * 2 +
-                        " coins\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nchange your bet.");
+                infoLabel.setText("You get: " + betCoins * 2 + " coins" +
+                        "\nTo continue change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             if(cpuTotalPoints < 17) {
                 spotFourCPU.setText(cpuCards.getPlayerHand(3));
                 textColor(cpuCards,spotFourPlayer, 3);
                 spotFourCPU.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
                 cpuTotalPoints += cpuCards.checkBlackJack(cpuCards, 3, cpuTotalPoints);
-                infoLabel.setText("Dealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nYou get: " + betCoins * 2 +
-                        " coins\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nchange your bet.");
+                infoLabel.setText("You get: " + betCoins * 2 + " coins" +
+                        "\nTo continue change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             if(cpuTotalPoints < 17) {
                 spotFiveCPU.setText(cpuCards.getPlayerHand(4));
                 textColor(cpuCards,spotFiveCPU, 4);
                 spotFiveCPU.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
                 cpuTotalPoints += cpuCards.checkBlackJack(cpuCards, 4, cpuTotalPoints);
-                infoLabel.setText("Dealer Cards Value: " + cpuTotalPoints +
-                        "\nPlayer Cards Value: " + totalPoints +
-                        "\n\nYou get: " + betCoins * 2 +
-                        " coins\nTotal Coins: " + totalCoins +
-                        "\nBet: " + betCoins +
-                        "\n\nTo continue\nchange your bet.");
+                infoLabel.setText("You get: " + betCoins * 2 + " coins" +
+                        "\nTo continue change your bet.");
+                infoLabel.setAlignment(Pos.CENTER);
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
+                dealerCardsValue.setText("Dealer Cards Value: " + cpuTotalPoints);
             }
             }
     }
@@ -398,6 +481,7 @@ public class Controller {
         textColor(hand,spot,index);
         spot.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         spot.setAlignment(Pos.TOP_CENTER);
+
     }
 
     /** BUTTONS METHODS **/
@@ -428,7 +512,13 @@ public class Controller {
 
                 organizeLabel(spotOneCPU, 0, cpuCards);
 
-                infoLabel.setText("You take a card!\n\n\n\nPlayer Cards Value: " + totalPoints + "\n\nTotal Coins: " + totalCoins + "\nBet: " + betCoins);
+                infoLabel.setText("You take a card!");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
             } else if (timesButtonClicked > 0) {
                 //doubleButton.setDisable(true);
                 switch (timesButtonClicked) {
@@ -448,7 +538,13 @@ public class Controller {
                         enableDoubleButton(4);
                         break;
                 }
-                infoLabel.setText("You take a card!\n\n\n\nPlayer Cards Value: " + totalPoints + "\n\nTotal Coins: " + totalCoins + "\nBet: " + betCoins);
+                infoLabel.setText("You take a card!");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + totalPoints);
             }
             if(timesButtonClicked == 6 && timesSplitClicked > 0){
                 userCards = new User(totalCoins,null);
@@ -547,7 +643,13 @@ public class Controller {
     protected void onDoubleButtonClick() {
             totalCoins -= betCoins;
             betCoins *= 2;
-            infoLabel.setText("You choose the Double bet!\n\n\n\nPlayer Cards Value: " + totalPoints + "\n\nTotal Coins: " + totalCoins + "\nBet: " + betCoins);
+            infoLabel.setText("You choose the Double bet!");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
+            playerCardsValue.setText("Player Cards Value: " + totalPoints);
             doubleButton.setDisable(true);
     }
 
@@ -593,12 +695,24 @@ public class Controller {
                 firstHalfPoints += firstSplitUserCards.checkBlackJack(firstSplitUserCards, 0, firstHalfPoints);
                 secondHalfPoints += firstSplitUserCards.checkBlackJack(secSplitUserCards, 0, secondHalfPoints);
 
-                infoLabel.setText("You take two cards!\n\n\n\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints + "\n\nTotal Coins: " + totalCoins + "\nBet: " + betCoins + "\nClick SPLIT again\nto take more cards.");
+                infoLabel.setText("You take two cards!\nClick SPLIT again to take more cards.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
             } else if (timesSplitClicked > 1) {
                 firstHalfPoints += firstSplitUserCards.checkBlackJack(firstSplitUserCards, timesSplitClicked, firstHalfPoints);
                 secondHalfPoints += firstSplitUserCards.checkBlackJack(secSplitUserCards, timesSplitClicked, secondHalfPoints);
 
-                infoLabel.setText("You take two cards!\n\n\n\nPlayer Cards Value: " + firstHalfPoints + " & " + secondHalfPoints + "\n\nTotal Coins: " + totalCoins + "\nBet: " + betCoins + "\nClick SPLIT again\nto take more cards.");
+                infoLabel.setText("You take two cards!\nClick SPLIT again to take more cards.");
+                infoLabel.setAlignment(Pos.CENTER);
+                coinsLabel.setText(Integer.toString(totalCoins));
+                betLabel.setText(Integer.toString(betCoins));
+                totalCoinsLabel.setText("Total Coins: " + totalCoins);
+                betCoinsLabel.setText("Bet Coins: " + betCoins);
+                playerCardsValue.setText("Player Cards Value: " + firstHalfPoints + " & " + secondHalfPoints);
 
             }
 
@@ -738,17 +852,14 @@ public class Controller {
             totalCoins -= 10;
             betCoins += 10;
 
-            infoLabel.setText("You raise, your bet \n* Click Raise Bet to add \n" +
-                    "10 coins in your bet.\n" +
-                    "\n" +
-                    "* Click Down Bet to \n" +
-                    "remove 10 coins \n" +
-                    "in your bet.\n" +
-                    "\n" +
-                    "* Click HIT one time\n" +
-                    "to finish your bet.\n" +
-                    "\n" +
-                    "Total Coins: " + totalCoins + "\n Bet : " + betCoins);
+            infoLabel.setText("You raise, your bet \n* Click Raise Bet to add 10 coins in your bet.\n" +
+                    "* Click Down Bet to remove 10 coins in your bet.\n" +
+                    "* Click HIT one time to finish your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
         }
     }
 
@@ -765,17 +876,14 @@ public class Controller {
             totalCoins += 10;
             betCoins -= 10;
 
-            infoLabel.setText("You lower, your bet \n* Click Raise Bet to add \n" +
-                    "10 coins in your bet.\n" +
-                    "\n" +
-                    "* Click Down Bet to \n" +
-                    "remove 10 coins \n" +
-                    "in your bet.\n" +
-                    "\n" +
-                    "* Click HIT one time\n" +
-                    "to finish your bet.\n" +
-                    "\n" +
-                    "Total Coins: " + totalCoins + "\n Bet : " + betCoins);
+            infoLabel.setText("You lower, your bet \n* Click Raise Bet to add 10 coins in your bet.\n" +
+                    "* Click Down Bet to remove 10 coins in your bet.\n" +
+                    "* Click HIT one time to finish your bet.");
+            infoLabel.setAlignment(Pos.CENTER);
+            coinsLabel.setText(Integer.toString(totalCoins));
+            betLabel.setText(Integer.toString(betCoins));
+            totalCoinsLabel.setText("Total Coins: " + totalCoins);
+            betCoinsLabel.setText("Bet Coins: " + betCoins);
         }
     }
 

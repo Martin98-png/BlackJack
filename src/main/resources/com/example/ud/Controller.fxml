@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -12,39 +11,28 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane depthTest="ENABLE" maxHeight="600.0" maxWidth="838.0" prefHeight="514.0" prefWidth="838.0" style="-fx-background-color: #112e2e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ud.Controller">
-   <Arc fill="#008a0e" layoutX="418.0" layoutY="83.0" length="200.0" radiusX="406.0" radiusY="396.0" startAngle="170.0" stroke="BLACK" strokeType="INSIDE" />
-   <Label fx:id="infoLabel" alignment="TOP_CENTER" blendMode="SRC_ATOP" layoutX="539.0" layoutY="223.0" prefHeight="271.0" prefWidth="158.0" style="-fx-background-color: #ced6dc;" text="Place your Bet:&#10;You have to bet &#10;atleast 10 Coins and &#10;less than 50 Coins per turn.&#10;&#10;* Click Raise Bet to add &#10;10 coins in your bet.&#10;&#10;* Click Down Bet to &#10;remove 10 coins &#10;in your bet.&#10;&#10;* Click HIT one time&#10;to finish your bet.&#10;&#10;Total Coins: 490 &#10;Bet Coins : 10" textAlignment="CENTER">
-      <opaqueInsets>
-         <Insets />
-      </opaqueInsets>
-      <padding>
-         <Insets top="10.0" />
-      </padding>
-      <font>
-         <Font name="System Bold" size="10.0" />
-      </font>
-   </Label>
-   <Button fx:id="splitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="697.0" layoutY="170.0" mnemonicParsing="false" onAction="#onSplitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #6D6D6D; -fx-border-radius: 1;" text="SPLIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Arc fill="#008a0e" layoutX="416.0" layoutY="83.0" length="200.0" radiusX="406.0" radiusY="396.0" startAngle="170.0" stroke="BLACK" strokeType="INSIDE" />
+   <Button fx:id="splitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="131.0" layoutY="460.0" mnemonicParsing="false" onAction="#onSplitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #6D6D6D; -fx-border-radius: 1;" text="SPLIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
    </Button>
-   <Button fx:id="doubleButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="579.0" layoutY="170.0" mnemonicParsing="false" onAction="#onDoubleButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #DE4545; -fx-border-radius: 1;" text="DOUBLE" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="doubleButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="460.0" mnemonicParsing="false" onAction="#onDoubleButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #DE4545; -fx-border-radius: 1;" text="DOUBLE" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
    </Button>
-   <Button fx:id="downBet" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="718.0" layoutY="449.0" mnemonicParsing="false" onAction="#onDownBetClick" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #909090; -fx-background-color: #42858C; -fx-border-radius: 1;" text="Down Bet" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="downBet" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="718.0" layoutY="463.0" mnemonicParsing="false" onAction="#onDownBetClick" prefHeight="30.0" prefWidth="82.0" style="-fx-border-color: #909090; -fx-background-color: #42858C; -fx-border-radius: 1;" text="Down Bet" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="13.0" />
       </font>
    </Button>
-   <Button fx:id="standButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="192.0" layoutY="170.0" mnemonicParsing="false" onAction="#onStandButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #1A5276; -fx-border-radius: 1;" text="STAND" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="standButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="401.0" mnemonicParsing="false" onAction="#onStandButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #1A5276; -fx-border-radius: 1;" text="STAND" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
    </Button>
-   <Button fx:id="raiseBet" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="718.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRaiseBetClick" prefHeight="30.0" prefWidth="82.0" scaleZ="10.0" style="-fx-border-color: #909090; -fx-background-color: #42858C; -fx-border-radius: 1;" text="Raise Bet" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="raiseBet" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="718.0" layoutY="413.0" mnemonicParsing="false" onAction="#onRaiseBetClick" prefHeight="30.0" prefWidth="82.0" scaleZ="10.0" style="-fx-border-color: #909090; -fx-background-color: #42858C; -fx-border-radius: 1;" text="Raise Bet" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="13.0" />
       </font>
@@ -52,21 +40,64 @@
          <Point3D />
       </rotationAxis>
    </Button>
-   <Button fx:id="hitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="73.0" layoutY="170.0" mnemonicParsing="false" onAction="#onHitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #2F7BA7; -fx-border-radius: 1;" text="HIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="hitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#onHitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #2F7BA7; -fx-border-radius: 1;" text="HIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
    </Button>
-   <Label fx:id="spotOnePlayer" alignment="TOP_CENTER" layoutX="394.0" layoutY="358.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
-   <Label fx:id="spotOneCPU" alignment="TOP_CENTER" layoutX="402.0" layoutY="34.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="infoLabel" layoutX="72.0" layoutY="188.0" prefHeight="102.0" prefWidth="700.0" text="Place your Bet:&#10;You have to bet atleast 10 Coins and less than 50 Coins per turn.&#10;* Click Raise Bet to add 10 coins in your bet.&#10;* Click Down Bet to remove 10 coins in your bet.&#9;&#9;&#9;&#9;* Click HIT one time to finish your bet." textAlignment="CENTER" textFill="WHITE">
+      <font>
+         <Font name="Cambria Bold" size="15.0" />
+      </font>
+   </Label>
+   <Label fx:id="spotOnePlayer" alignment="TOP_CENTER" layoutX="391.0" layoutY="376.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotTwoPlayer" alignment="TOP_CENTER" layoutX="422.0" layoutY="360.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotThreePlayer" alignment="TOP_CENTER" layoutX="389.0" layoutY="327.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotFourPlayer" alignment="TOP_CENTER" layoutX="426.0" layoutY="300.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotFivePlayer" alignment="TOP_CENTER" layoutX="389.0" layoutY="271.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotOneCPU" alignment="TOP_CENTER" layoutX="406.0" layoutY="22.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotTwoCPU" alignment="TOP_CENTER" layoutX="437.0" layoutY="41.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotThreeCPU" alignment="TOP_CENTER" layoutX="408.0" layoutY="76.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotFourCPU" alignment="TOP_CENTER" layoutX="437.0" layoutY="90.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
+   <Label fx:id="spotFiveCPU" alignment="TOP_CENTER" layoutX="408.0" layoutY="133.0" prefHeight="85.0" prefWidth="51.0" textAlignment="CENTER" />
    <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="256.0" layoutY="377.0" pickOnBounds="true" preserveRatio="true">
       <image>
          <Image url="@coin.png" />
       </image>
    </ImageView>
-   <Label fx:id="coins" layoutX="277.0" layoutY="399.0" text="500" textFill="WHITE">
+   <Label fx:id="coinsLabel" layoutX="277.0" layoutY="399.0" text="500" textFill="WHITE">
       <font>
          <Font name="Cambria" size="12.0" />
+      </font>
+   </Label>
+   <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="643.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@coin.png" />
+      </image>
+   </ImageView>
+   <Label fx:id="betLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="666.0" layoutY="50.0" text="10" textFill="WHITE">
+      <font>
+         <Font name="Cambria" size="12.0" />
+      </font>
+   </Label>
+   <Label fx:id="betCoinsLabel" layoutX="488.0" layoutY="487.0" text="Bet Coins: 10" textFill="WHITE">
+      <font>
+         <Font name="Cambria Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="totalCoinsLabel" layoutX="256.0" layoutY="488.0" text="Total Coins: 490" textFill="WHITE">
+      <font>
+         <Font name="Cambria Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="playerCardsValue" layoutX="53.0" layoutY="66.0" text="Player Cards Value: 0" textFill="WHITE">
+      <font>
+         <Font name="Cambria Bold" size="16.0" />
+      </font>
+   </Label>
+   <Label fx:id="dealerCardsValue" layoutX="52.0" layoutY="31.0" text="Dealer Cards Value: 0" textFill="WHITE">
+      <font>
+         <Font name="Cambria Bold" size="16.0" />
       </font>
    </Label>
    <cursor>
