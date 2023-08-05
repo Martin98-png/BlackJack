@@ -10,9 +10,9 @@
 <?import javafx.scene.shape.Arc?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane depthTest="ENABLE" maxHeight="600.0" maxWidth="838.0" prefHeight="514.0" prefWidth="838.0" style="-fx-background-color: #112e2e;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ud.Controller">
+<AnchorPane depthTest="ENABLE" maxHeight="600.0" maxWidth="838.0" prefHeight="514.0" prefWidth="838.0" style="-fx-background-color: #112e2e;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ud.Controller">
    <Arc fill="#008a0e" layoutX="416.0" layoutY="83.0" length="200.0" radiusX="406.0" radiusY="396.0" startAngle="170.0" stroke="BLACK" strokeType="INSIDE" />
-   <Button fx:id="splitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="131.0" layoutY="460.0" mnemonicParsing="false" onAction="#onSplitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #6D6D6D; -fx-border-radius: 1;" text="SPLIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="splitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="409.0" mnemonicParsing="false" onAction="#onSplitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #6D6D6D; -fx-border-radius: 1;" text="SPLIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
@@ -27,7 +27,7 @@
          <Font name="Berlin Sans FB Demi Bold" size="13.0" />
       </font>
    </Button>
-   <Button fx:id="standButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="401.0" mnemonicParsing="false" onAction="#onStandButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #1A5276; -fx-border-radius: 1;" text="STAND" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="standButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="121.0" layoutY="459.0" mnemonicParsing="false" onAction="#onStandButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #1A5276; -fx-border-radius: 1;" text="STAND" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>
@@ -40,7 +40,7 @@
          <Point3D />
       </rotationAxis>
    </Button>
-   <Button fx:id="hitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="347.0" mnemonicParsing="false" onAction="#onHitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #2F7BA7; -fx-border-radius: 1;" text="HIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+   <Button fx:id="hitButton" cache="true" cacheHint="QUALITY" depthTest="DISABLE" layoutX="14.0" layoutY="357.0" mnemonicParsing="false" onAction="#onHitButtonClick" prefHeight="32.0" prefWidth="94.0" style="-fx-border-color: #909090; -fx-background-color: #2F7BA7; -fx-border-radius: 1;" text="HIT" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
       <font>
          <Font name="Berlin Sans FB Demi Bold" size="16.0" />
       </font>

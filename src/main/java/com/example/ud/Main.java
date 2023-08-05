@@ -8,10 +8,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-//Version 1.2.0 - 8/3/2023
-//Now double button works when the total of cards is 9,10 or 11 without aces and 16,17 or 18 with aces
-//Bug fix - When a 10 and an ace is drawn the totalpoints were 20 instead of 21
-//configureWinCondition method to avoid code repetition
+//Version 2.0 - 8/4/2023
+//Author: Martin Velasquez
+//Description: This program is a BlackJack game, the user can play against the CPU.
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
