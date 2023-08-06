@@ -15,7 +15,7 @@ import java.util.Arrays;
 
 
 public class Controller {
-    /**
+    /*
      * Controller Class:
      * Creates and controls all GUI objects to work
      * The class contains buttons, labels, arrays and special methods to make the app works properly.
@@ -95,7 +95,7 @@ public class Controller {
     @FXML
     private Button downBet;
 
-    /** REQUIRED METHODS **/
+    /* REQUIRED METHODS */
 
     /**
      * initialize() - starts the app before any button is clicked.
@@ -387,7 +387,7 @@ public class Controller {
 
     }
 
-    /** BUTTONS METHODS **/
+    /* BUTTONS METHODS */
 
     /**
      * onHitButtonClick() - Disable the bet buttons and add Cards to the labels according to the times is clicked.
