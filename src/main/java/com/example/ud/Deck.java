@@ -247,7 +247,7 @@ public class Deck {
 
         for(int i = 0; i < 300; i++)
         {
-            card.setAll(1,Card.HEART);
+            card.setAll(2,Card.HEART);
             singleDeck[i] = card.getCardFormat();
         }
 
